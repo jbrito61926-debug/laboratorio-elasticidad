@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laboratorio Virtual de Elasticidad</title>
+  
+  <!-- Librerías Externas -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+  <!-- Hoja de Estilos Local -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <h2>Laboratorio Virtual: Elasticidad y Equilibrio Estático</h2>
+  
+  <div class="main-container">
+    <div id="canvas-container"></div>
+
+    <div id="controls">
+      <div class="control-group">
+        <label for="material">Material del Cable:</label>
+        <select id="material">
+          <option value="acero">Acero (Y = 200 GPa)</option>
+          <option value="aluminio">Aluminio (Y = 69 GPa)</option>
+          <option value="cobre">Cobre (Y = 110 GPa)</option>
+          <option value="goma">Goma/Caucho (Y = 0.05 GPa)</option>
+        </select>
+      </div>
+
+      <div class="control-group">
+        <label>Masa de la Pesa (kg): <span id="val-masa">50</span></label>
+        <input type="range" id="masa" min="1" max="500" value="50">
+      </div>
+
+      <div class="control-group">
+        <label>Diámetro del Cable (mm): <span id="val-diametro">5</span></label>
+        <input type="range" id="diametro" min="1" max="20" value="5" step="0.5">
+      </div>
+
+      <hr>
+      <h3>Resultados</h3>
+      <div>Tensión Teórica (N): <div id="m-tension" class="metric">0</div></div>
+      <div>Esfuerzo (&sigma;) (MPa): <div id="m-esfuerzo" class="metric">0</div></div>
+      <div>Estiramiento (&Delta;L) (cm): <div id="m-estiramiento" class="metric">0</div></div>
+      <div id="m-estado" class="metric status">ESTABLE</div>
+
+      <button id="btn-exportar" class="btn">Exportar Reporte (CSV)</button>
+    </div>
+  </div>
+
+  <div class="chart-container">
+    <h3>Gráfica: Esfuerzo (&sigma;) vs. Deformación (&Delta;L)</h3>
+    <canvas id="graficaElasticidad"></canvas>
+  </div>
+
+  <!-- Lógica JavaScript Local -->
+  <script src="app.js"></script>
+</body>
+</html>

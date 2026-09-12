@@ -1,0 +1,102 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  background-color: #f0f2f5;
+}
+
+.main-container {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+#canvas-container {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+}
+
+#controls {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 300px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.control-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+input, select {
+  width: 100%;
+}
+
+.metric {
+  background: #eef;
+  padding: 8px;
+  border-radius: 4px;
+  margin-top: 5px;
+  font-family: monospace;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.status {
+  text-align: center;
+  font-weight: bold;
+  margin-top: 15px;
+}
+
+.broken {
+  background: #ffe6e6;
+  color: #d9534f;
+  animation: pulso 0.6s ease-in-out infinite alternate;
+}
+
+@keyframes pulso {
+  from { transform: scale(1); }
+  to { transform: scale(1.03); }
+}
+
+.safe {
+  background: #e6ffe6;
+  color: #2e7d32;
+}
+
+.btn {
+  width: 100%;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+
+.chart-container {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 20px;
+  max-width: 820px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.chart-container h3 {
+  margin-top: 0;
+  font-size: 16px;
+  color: #333;
+}
