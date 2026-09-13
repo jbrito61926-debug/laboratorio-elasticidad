@@ -114,7 +114,7 @@ function actualizarFisica() {
   estaRoto = nuevoEstaRoto;
 
   if (!estaRoto) {
-    const nuevoObjetivoPx = deltaLcm * 15;
+    const nuevoObjetivoPx = Math.min(deltaLcm * 15, 180);
     if (objetivoAnteriorPx !== null) {
       const cambio = nuevoObjetivoPx - objetivoAnteriorPx;
       if (Math.abs(cambio) > 0.5) {
