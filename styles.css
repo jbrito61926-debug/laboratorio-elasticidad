@@ -2,6 +2,53 @@ body {
   font-family: Arial, sans-serif;
   margin: 20px;
   background-color: #f0f2f5;
+  color: #1a1a1a;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.btn-toggle {
+  background-color: #2b2b2b;
+  color: #fff;
+  border: none;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.btn-toggle:hover {
+  background-color: #444;
+  transform: translateY(-1px);
+}
+
+.slider-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.slider-row input[type="range"] {
+  flex: 1;
+}
+
+.num-input {
+  width: 70px;
+  flex: 0 0 auto;
+  padding: 4px 6px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: monospace;
+  text-align: center;
 }
 
 .main-container {
@@ -99,4 +146,69 @@ input, select {
   margin-top: 0;
   font-size: 16px;
   color: #333;
+}
+
+/* ===================== MODO OSCURO ===================== */
+body.dark-mode {
+  background-color: #121417;
+  color: #e6e6e6;
+}
+
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode label {
+  color: #f0f0f0;
+}
+
+body.dark-mode #canvas-container {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.6);
+}
+
+body.dark-mode #controls,
+body.dark-mode .chart-container {
+  background: #1e2126;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.6);
+}
+
+body.dark-mode .metric {
+  background: #2a2e35;
+  color: #e6e6e6;
+}
+
+body.dark-mode .safe {
+  background: #1f3324;
+  color: #7fd894;
+}
+
+body.dark-mode .broken {
+  background: #3a1f1f;
+  color: #ff8a80;
+}
+
+body.dark-mode .num-input {
+  background: #2a2e35;
+  border-color: #444;
+  color: #e6e6e6;
+}
+
+body.dark-mode select,
+body.dark-mode input[type="range"] {
+  accent-color: #4dabf7;
+}
+
+body.dark-mode .btn {
+  background-color: #4dabf7;
+}
+
+body.dark-mode .btn:hover {
+  background-color: #2f8fe0;
+}
+
+body.dark-mode .btn-toggle {
+  background-color: #4dabf7;
+  color: #121417;
+}
+
+body.dark-mode .btn-toggle:hover {
+  background-color: #2f8fe0;
 }
