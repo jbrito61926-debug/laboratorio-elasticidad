@@ -36,11 +36,70 @@ function setup() {
   inicializarGrafica();
 
   document.getElementById('material').addEventListener('change', actualizarFisica);
-  document.getElementById('masa').addEventListener('input', actualizarFisica);
-  document.getElementById('diametro').addEventListener('input', actualizarFisica);
+
+  // --- Sincronización slider <-> campo numérico (edición directa) ---
+  vincularSliderConNumero('masa', 'masa-num', 1, 500);
+  vincularSliderConNumero('diametro', 'diametro-num', 1, 20);
+
   document.getElementById('btn-exportar').addEventListener('click', descargarCSV);
+  document.getElementById('btn-modo-oscuro').addEventListener('click', alternarModoOscuro);
 
   actualizarFisica();
+}
+
+function vincularSliderConNumero(sliderId, numeroId, min, max) {
+  const slider = document.getElementById(sliderId);
+  const numero = document.getElementById(numeroId);
+
+  slider.addEventListener('input', () => {
+    numero.value = slider.value;
+    actualizarFisica();
+  });
+
+  numero.addEventListener('input', () => {
+    // Permite escribir libremente mientras se edita, sin forzar el valor a cada tecla
+    if (numero.value === '') return;
+    let val = parseFloat(numero.value);
+    if (isNaN(val)) return;
+    val = Math.min(max, Math.max(min, val));
+    slider.value = val;
+    actualizarFisica();
+  });
+
+  numero.addEventListener('change', () => {
+    // Al salir del campo, corrige el valor si quedó vacío o fuera de rango
+    let val = parseFloat(numero.value);
+    if (isNaN(val)) val = parseFloat(slider.value);
+    val = Math.min(max, Math.max(min, val));
+    numero.value = val;
+    slider.value = val;
+    actualizarFisica();
+  });
+}
+
+function alternarModoOscuro() {
+  const activo = document.body.classList.toggle('dark-mode');
+  const btn = document.getElementById('btn-modo-oscuro');
+  btn.setAttribute('aria-pressed', activo ? 'true' : 'false');
+  btn.textContent = activo ? '☀️ Modo Claro' : '🌙 Modo Oscuro';
+  actualizarColoresGrafica();
+}
+
+function actualizarColoresGrafica() {
+  if (!miGrafica) return;
+  const oscuro = document.body.classList.contains('dark-mode');
+  const colorTexto = oscuro ? '#e6e6e6' : '#333333';
+  const colorGrid = oscuro ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)';
+
+  miGrafica.options.scales.x.title.color = colorTexto;
+  miGrafica.options.scales.y.title.color = colorTexto;
+  miGrafica.options.scales.x.ticks = { color: colorTexto };
+  miGrafica.options.scales.y.ticks = { color: colorTexto };
+  miGrafica.options.scales.x.grid = { color: colorGrid };
+  miGrafica.options.scales.y.grid = { color: colorGrid };
+  miGrafica.options.plugins = miGrafica.options.plugins || {};
+  miGrafica.options.plugins.legend = { labels: { color: colorTexto } };
+  miGrafica.update();
 }
 
 function inicializarGrafica() {
@@ -78,9 +137,6 @@ function actualizarFisica() {
   const mat = MATERIALES[matKey];
   const masa = parseFloat(document.getElementById('masa').value);
   const diametroMm = parseFloat(document.getElementById('diametro').value);
-
-  document.getElementById('val-masa').innerText = masa;
-  document.getElementById('val-diametro').innerText = diametroMm;
 
   const g = 9.81;
   const F_peso = masa * g;
