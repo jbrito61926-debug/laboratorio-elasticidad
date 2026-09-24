@@ -11,6 +11,49 @@
   
   <!-- Hoja de Estilos Local -->
   <link rel="stylesheet" href="styles.css">
+
+  <!-- Estilos del pie de créditos (autocontenidos: heredan color y se adaptan al modo oscuro/claro) -->
+  <style>
+    .site-footer {
+      margin-top: 50px;
+      padding: 28px 20px 24px;
+      text-align: center;
+      border-top: 1px solid currentColor;
+      opacity: 0.85;
+    }
+    .site-footer .footer-institucion {
+      font-size: 0.95em;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      margin: 0 0 10px;
+    }
+    .site-footer .footer-institucion span {
+      font-weight: 700;
+    }
+    .site-footer .footer-autores {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 6px 18px;
+      margin: 0 auto;
+      padding: 0;
+      max-width: 900px;
+      font-size: 0.82em;
+      opacity: 0.8;
+    }
+    .site-footer .footer-autores li {
+      white-space: nowrap;
+    }
+    .site-footer .footer-nota {
+      margin: 14px 0 0;
+      font-size: 0.75em;
+      opacity: 0.55;
+    }
+    @media (max-width: 480px) {
+      .site-footer .footer-autores li { white-space: normal; }
+    }
+  </style>
 </head>
 <body>
 
@@ -64,6 +107,23 @@
     <h3>Gráfica: Esfuerzo (&sigma;) vs. Deformación (&Delta;L)</h3>
     <canvas id="graficaElasticidad"></canvas>
   </div>
+
+  <!-- Créditos -->
+  <footer class="site-footer">
+    <p class="footer-institucion">Creado por estudiantes de la <span>Universidad Cuauhtémoc</span></p>
+    <ul class="footer-autores">
+      <li>Jorge René Alpízar Miranda</li>
+      <li>Jesús Moctezuma Brito García</li>
+      <li>Joshua Herrera García</li>
+      <li>Jesús Isaí Macías Cruz</li>
+      <li>Miguel Ángel Olmeta Briceño</li>
+      <li>Diego Rayo Duran</li>
+      <li>Ismael Sánchez Rentería</li>
+      <li>Patricio Magos Escamilla</li>
+      <li>Luis Mario Rangel Sánchez</li>
+    </ul>
+    <p class="footer-nota">Laboratorio Virtual de Elasticidad y Equilibrio Estático</p>
+  </footer>
 
   <!-- Lógica JavaScript Local -->
   <script src="app.js"></script>
