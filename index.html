@@ -14,7 +14,10 @@
 </head>
 <body>
 
-  <h2>Laboratorio Virtual: Elasticidad y Equilibrio Estático</h2>
+  <div class="page-header">
+    <h2>Laboratorio Virtual: Elasticidad y Equilibrio Estático</h2>
+    <button id="btn-modo-oscuro" class="btn-toggle" type="button" aria-pressed="false">🌙 Modo Oscuro</button>
+  </div>
   
   <div class="main-container">
     <div id="canvas-container"></div>
@@ -31,13 +34,19 @@
       </div>
 
       <div class="control-group">
-        <label>Masa de la Pesa (kg): <span id="val-masa">50</span></label>
-        <input type="range" id="masa" min="1" max="500" value="50">
+        <label for="masa">Masa de la Pesa (kg):</label>
+        <div class="slider-row">
+          <input type="range" id="masa" min="1" max="500" value="50">
+          <input type="number" id="masa-num" class="num-input" min="1" max="500" value="50" step="1">
+        </div>
       </div>
 
       <div class="control-group">
-        <label>Diámetro del Cable (mm): <span id="val-diametro">5</span></label>
-        <input type="range" id="diametro" min="1" max="20" value="5" step="0.5">
+        <label for="diametro">Diámetro del Cable (mm):</label>
+        <div class="slider-row">
+          <input type="range" id="diametro" min="1" max="20" value="5" step="0.5">
+          <input type="number" id="diametro-num" class="num-input" min="1" max="20" value="5" step="0.5">
+        </div>
       </div>
 
       <hr>
